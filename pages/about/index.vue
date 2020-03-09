@@ -1,8 +1,8 @@
 <template>
   <div class="">
-    <VueSlickCarousel :settings="settings" v-if="headers.length > 0">
-      <div class="slide" v-if="header['aio:images'] && header['aio:images'][0] && header['aio:images'][0]['formats']['header_big']['url']" v-for="header in headers" :key="header.id">
-        <img :src="'https://www.netplus.ch'+header['aio:images'][0]['formats']['header_big']['url']" class="w-100" />
+    <VueSlickCarousel :settings="settings">
+      <div class="slide" v-for="index in 10" :key="index">
+        <nuxt-link to="about"><img src="https://picsum.photos/id/237/1920/500"/></nuxt-link>
       </div>
     </VueSlickCarousel>
     <ul class="slick-dots custom-dot-class">
@@ -41,13 +41,6 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import Logo from '~/components/Logo.vue'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 export default {
-  async asyncData(app) {
-    let data = await app.$axios.get("https://www.netplus.ch/api/content/477?locale=fr&embed[]=color&embed[]=section&embed[]=blocs&embed[]=blocs.color&embed[]=blocs.faq_type&embed[]=blocs.section&embed[]=blocs.contents&embed[]=blocs.contents.products&embed[]=blocs.contents.products.product&embed[]=blocs.contents.products.internet&embed[]=blocs.contents.products.mobile&embed[]=blocs.contents.products.phone&embed[]=blocs.contents.products.tv&embed[]=blocs.contents.link.section&embed[]=headers&embed[]=headers.link&embed[]=headers.link.section");
-    console.log(data.data);
-    return {
-      headers : data.data.headers
-    }
-  },
   data() {
     return {
       settings: {
