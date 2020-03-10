@@ -1,65 +1,27 @@
 <template>
   <div class="">
-    <VueSlickCarousel v-bind="settings">
-      <div class="slide" v-for="index in 10" :key="index">
-        <nuxt-link to="/about"><img src="https://picsum.photos/id/237/1920/500"/></nuxt-link>
-      </div>
-    </VueSlickCarousel>
+    <button @click="setcounter">click</button>
     <div>
-
-          <logo />
-      <h1 class="title">
-        nuxt-slick-carousel
-      </h1>
-      <h2 class="subtitle">
-        My sweet Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <nuxt-link
-          to="/about"
-          class="button--grey"
-        >
-          About
-        </nuxt-link>
-      </div>
+      <nuxt-link to="/about"> About </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import 'vue-slick-carousel/dist/vue-slick-carousel.css';
-import VueSlickCarousel from 'vue-slick-carousel';
-
-import Logo from '~/components/Logo.vue'
+import { mapMutations } from 'vuex'
 
 export default {
-  data() {
-    return {
-      settings: {
-        "arrows":false,
-    "infinite": true,
-  "edgeFriction": 0.35,
-  "slidesToShow": 1,
-  "slidesToScroll": 1,
-    "autoplay": true,
-  "speed": 1000,
-  "autoplaySpeed": 2000,
-  "lazyLoad": "ondemand",
-      "dots": true,
-      "dotsClass" : "slick-dots custom-indicators"
-}
-    }
+  layout: 'default',
+  methods: {
+    setcounter () {
+      this.$store.commit('setcount', 4)
+    },
+    ...mapMutations({
+      setcount: 'setcount'
+    })
   },
-  components: {
-    Logo,
-    VueSlickCarousel
+  created: function() {
+    this.setcounter()
   }
 }
 </script>
