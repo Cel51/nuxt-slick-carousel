@@ -1,47 +1,20 @@
 <template>
   <div>
-    <VueSlickCarousel v-bind="settings">
-      <div class="slide" v-for="index in count" :key="index">
-        <img :src="`https://picsum.photos/id/${index}/1920/500`"/>
-      </div>
-    </VueSlickCarousel>
     <nuxt />
   </div>
 </template>
 
 <script>
-import 'vue-slick-carousel/dist/vue-slick-carousel.css';
-import VueSlickCarousel from 'vue-slick-carousel';
 
 import Logo from '~/components/Logo.vue'
 
 export default {
   layout: 'default',
   computed: {
-    count () {
-      return this.$store.state.counter
-    }
-  },
-  data() {
-    return {
-      settings: {
-        "arrows":false,
-        "infinite": true,
-        "edgeFriction": 0.35,
-        "slidesToShow": 1,
-        "slidesToScroll": 1,
-        "autoplay": true,
-        "speed": 1000,
-        "autoplaySpeed": 2000,
-        "lazyLoad": "ondemand",
-        "dots": true,
-        "dotsClass" : "slick-dots custom-indicators"
-      }
-    }
   },
   components: {
     Logo,
-    VueSlickCarousel
+
   }
 }
 </script>

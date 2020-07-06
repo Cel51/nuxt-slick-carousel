@@ -34,6 +34,7 @@ export default {
   */
   buildModules: [
   ],
+  telemetry: false,
   /*
   ** Nuxt.js modules
   */
